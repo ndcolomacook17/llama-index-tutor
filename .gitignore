@@ -3,6 +3,11 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# dotfiles
+.env
+# version deps
+.tool-versions
+
 # C extensions
 *.so
 
