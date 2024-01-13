@@ -43,7 +43,7 @@ embed_model = HuggingFaceEmbedding(model_name="BAAI/bge-small-en-v1.5")
 service_context = ServiceContext.from_defaults(llm=llm, embed_model=embed_model)
 
 # TODO: add tables to context window
-tables_to_include = ["members"]
+tables_to_include = []
 
 sql_database = SQLDatabase(engine, include_tables=tables_to_include)
 
