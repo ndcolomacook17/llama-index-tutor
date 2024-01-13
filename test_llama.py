@@ -15,12 +15,15 @@ from transformers import AutoTokenizer
 # use Huggingface embeddings
 from llama_index.embeddings import HuggingFaceEmbedding
 
+MODELS_PATH = "/Users/ianmclaughlin/Downloads"
+DOCUMENTS_PATH = "/Users/ianmclaughlin/PycharmProjects/llama-index-tutor/documents"
+
 if __name__ == "__main__":
   llm = LlamaCPP(
     # You can pass in the URL to a GGML model to download it automatically
     # model_url="/Users/nicocoloma-cook/Desktop/model-00002-of-00002.safetensors",
     # optionally, you can set the path to a pre-downloaded model instead of model_url
-    model_path="/Users/nicocoloma-cook/Desktop/llava-v1.5-7b-Q4_K.gguf",
+    model_path=f"{MODELS_PATH}/llava-v1.5-7b-Q4_K.gguf",
     # temperature=0.1,
     # max_new_tokens=256,
     # # llama2 has a context window of 4096 tokens, but we set it lower to allow for some wiggle room
@@ -57,7 +60,7 @@ if __name__ == "__main__":
 
   # load documents
   data_dir_path = "/Users/nicocoloma-cook/Desktop/llama_data"
-  documents = SimpleDirectoryReader("/Users/nicocoloma-cook/Desktop/llama_data").load_data()
+  documents = SimpleDirectoryReader("/Users/ianmclaughlin/PycharmProjects/llama-index-tutor/documents").load_data()
 
   # create vector store index
   index = VectorStoreIndex.from_documents(
@@ -66,7 +69,7 @@ if __name__ == "__main__":
 
   # set up query engine
   query_engine = index.as_query_engine()
-  raw_query = "Give me a summary of this book"
+  raw_query = "Give me a summary of these notes/ this pdf"
 
   response = query_engine.query(raw_query)
   print(response)
