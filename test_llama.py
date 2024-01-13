@@ -11,6 +11,8 @@ from llama_index.llms.llama_utils import (
 
 from llama_index import set_global_tokenizer
 from transformers import AutoTokenizer
+from dotenv import load_dotenv
+import os
 
 # use Huggingface embeddings
 from llama_index.embeddings import HuggingFaceEmbedding
@@ -19,6 +21,8 @@ MODELS_PATH = "/Users/ianmclaughlin/Downloads"
 DOCUMENTS_PATH = "/Users/ianmclaughlin/PycharmProjects/llama-index-tutor/documents"
 
 if __name__ == "__main__":
+  load_dotenv()
+
   llm = LlamaCPP(
     # You can pass in the URL to a GGML model to download it automatically
     # model_url="/Users/nicocoloma-cook/Desktop/model-00002-of-00002.safetensors",
@@ -60,7 +64,7 @@ if __name__ == "__main__":
 
   # load documents
   data_dir_path = "/Users/nicocoloma-cook/Desktop/llama_data"
-  documents = SimpleDirectoryReader("/Users/ianmclaughlin/PycharmProjects/llama-index-tutor/documents").load_data()
+  documents = SimpleDirectoryReader(data_dir_path).load_data()
 
   # create vector store index
   index = VectorStoreIndex.from_documents(

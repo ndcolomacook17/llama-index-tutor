@@ -5,3 +5,6 @@ torchvision
 torchaudio
 pypdf
 nbconvert
+transformers
+llama-cpp-python
+python-dotenv
