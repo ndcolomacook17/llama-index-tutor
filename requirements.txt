@@ -8,3 +8,6 @@ nbconvert
 transformers
 llama-cpp-python
 python-dotenv
+mysql-connector-python
+sqalchemy
+mysqlclient
